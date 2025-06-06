@@ -1,0 +1,92 @@
+Simulation Experiments with ASReview Makita (Multimodel and ERFI Templates)
+
+This file summarizes the simulation experiments conducted using ASReview Makita to evaluate machine learning performance for prioritizing relevant records in two datasets: one derived from full-text screening (CTC) and one from title and abstract screening (CTA). All file paths have been anonymized to preserve user privacy.
+
+---
+
+Experiment: Multimodel Template with CTC Dataset
+
+Objective: Evaluate recall and performance metrics across multiple classifiers and feature extraction methods.
+
+Command used:
+asreview makita template multimodel \
+  -s ./data/ctc_dataset \
+  --job_file config/makx1.sh \
+  -o ./resultados/ctc_output \
+  --classifiers svm rf logistic nb \
+  --feature_extractors tfidf doc2vec \
+  --impossible_models nb,doc2vec \
+  --no_wordclouds \
+  --n_runs 100 \
+  --init_seed 155 \
+  --model_seed 100
+
+Approximate runtime: 2 hours 15 minutes
+
+---
+
+Experiment: Multimodel Template with CTA Dataset
+
+Objective: Same configuration as above, applied to a different dataset (title and abstract screening).
+
+Command used:
+asreview makita template multimodel \
+  -s ./data/cta_dataset \
+  --job_file config/makx2.sh \
+  -o ./resultados/cta_output \
+  --classifiers svm rf logistic nb \
+  --feature_extractors tfidf doc2vec \
+  --impossible_models nb,doc2vec \
+  --no_wordclouds \
+  --n_runs 100 \
+  --init_seed 155 \
+  --model_seed 100
+
+Approximate runtime: 14 hours
+
+---
+
+Experiment: ERFI Template with CTC Dataset
+
+Objective: Evaluate recall and ranking metrics for each possible article used as prior knowledge.
+
+Command used:
+asreview makita template arfi \
+  -s ./data/ctc_dataset \
+  --job_file config/makx2.sh \
+  -o ./resultados/ctc_erfi_output \
+  --classifiers nb \
+  --feature_extractors tfidf \
+  --no_wordclouds \
+  --n_runs 100 \
+  --init_seed 75 \
+  --model_seed 106
+
+Approximate runtime: 5 minutes
+
+---
+
+Experiment: Multimodel Template with CTA Dataset (ERFI-like analysis)
+
+Objective: Simulate ERFI-like behavior by evaluating performance variability when changing the prior article, using the multimodel template.
+
+Command used:
+asreview makita template multimodel \
+  -s ./data/cta_dataset \
+  --job_file config/makx4.sh \
+  -o ./resultados/cta_erfi_output \
+  --classifiers svm rf logistic nb \
+  --feature_extractors tfidf doc2vec \
+  --impossible_models nb,doc2vec \
+  --no_wordclouds \
+  --n_runs 100 \
+  --init_seed 155 \
+  --model_seed 100
+
+Approximate runtime: 14 hours
+
+---
+
+Software: ASReview Makita
+Makita version: (replace with your version, e.g., 1.3.2)
+Python version: (optional)
