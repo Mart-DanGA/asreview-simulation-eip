@@ -7,9 +7,9 @@ This repository contains the data, configurations, and raw outputs of a simulati
 ├── data/ # Input datasets used for the simulation
 ├── config/ # Configuration files for Makita 
 ├── resultados/ # Raw outputs of the simulation runs
-├── README.md # This file
-├── LICENSE # License file (e.g., MIT or CC-BY-4.0)
-└── .gitignore # Excluded files
+├── README.md # 
+├── LICENSE # 
+└── .gitignore # 
 
 
 ## How to Reproduce
