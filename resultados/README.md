@@ -6,8 +6,8 @@ Only aggregated `.csv` files are included to ensure privacy and reproducibility.
 
 The files in this folder may include:
 
-- `metrics_summary.csv`: Summary of recall, precision, and other evaluation metrics for each experiment.
-- `wss_erf_curve.csv`: Data points used to plot WSS and ERF curves.
-- `prior_article_performance.csv`: Performance metrics for each article used as prior knowledge (in ERFI-style simulations).
+- `metrics_xxx.csv`: Summary of recall, precision, and other evaluation metrics for each experiment.
+
+-  heuristic and sampling stop_rule for CTA and CTC dataset
 
 All results are based on anonymized datasets and simulation parameters, as described in the `README.md` and `config/experiment_configuration.txt`.
